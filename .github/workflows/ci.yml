@@ -31,11 +31,11 @@ jobs:
 
     - name: Run flake8 (Linting)
       run: |
-        flake8 my_package tests
+        flake8 measures tests
 
     - name: Run black (Formatting)
       run: |
-        black --check my_package tests
+        black --check measures tests
 
     - name: Run tests
       run: |
