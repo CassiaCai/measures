@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout code
@@ -18,7 +18,16 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install flake8 black pytest  # Explicitly install flake8, black, and pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Check installed versions
+      run: |
+        python --version
+        pip --version
+        flake8 --version
+        black --version
+        pytest --version
 
     - name: Run flake8 (Linting)
       run: |
